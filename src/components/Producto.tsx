@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-
 interface Props {
   precio: number;
-  setPrecio: (valor: number) => void; // Función para actualizar precio en el padre
+  onChange: (valor: number) => void; // Función para actualizar precio en el padre
 }
 
-export const Producto = ({ precio, setPrecio }: Props) => {
-  const [valor, setValor] = useState(precio);
-
+export const Producto = ({ precio, onChange }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nuevoValor = Number(e.target.value);
-    setValor(nuevoValor); // Actualizamos el estado local
-    setPrecio(nuevoValor); // Actualizamos el estado en el padre
+    onChange(nuevoValor); // Actualizamos el estado en el padre
   };
 
   return (
@@ -21,7 +16,7 @@ export const Producto = ({ precio, setPrecio }: Props) => {
         <input
           type="number"
           placeholder="Ingresa un Producto"
-          value={valor} // input controlado
+          value={precio} // input controlado
           onChange={handleChange} // manejador de cambio
           className="w-full px-4 py-2 border border-slate-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
         />

@@ -2,26 +2,10 @@ import React, { useState } from "react";
 import { Producto } from "./Producto";
 
 export const DescuentoCalculado = () => {
-  // Estado para los precios
   const [precios, setPrecios] = useState<number[]>([
     500, 1500, 6000, 9500, 14000,
   ]);
-
-  // Estado para los precios con descuento
   const [descuentos, setDescuentos] = useState<number[]>([0, 0, 0, 0, 0]);
-
-  // Actualizar precio individual
-  const handlePrecioChange = (index: number, nuevoValor: number) => {
-    const nuevosPrecios = [...precios];
-    nuevosPrecios[index] = nuevoValor;
-    setPrecios(nuevosPrecios);
-
-    // Calcular automáticamente el descuento para este producto
-    const precioConDescuento = calcularDescuento(nuevoValor);
-    const nuevosDescuentos = [...descuentos];
-    nuevosDescuentos[index] = precioConDescuento;
-    setDescuentos(nuevosDescuentos);
-  };
 
   // Función que calcula el precio con descuento según los rangos
   const calcularDescuento = (precio: number): number => {
@@ -30,12 +14,22 @@ export const DescuentoCalculado = () => {
     if (precio >= 1000 && precio <= 4999.99) descuento = 0.1;
     else if (precio >= 5000 && precio <= 8999.99) descuento = 0.2;
     else if (precio >= 9000 && precio <= 12999.99) descuento = 0.3;
-    else descuento = 0;
 
     return precio - precio * descuento;
   };
 
-  // Función para recalcular todos los descuentos al presionar el botón
+  // Actualizar precio individual y calcular el descuento automáticamente
+  const handlePrecioChange = (index: number, nuevoValor: number) => {
+    const nuevosPrecios = [...precios];
+    nuevosPrecios[index] = nuevoValor;
+    setPrecios(nuevosPrecios);
+
+    const nuevosDescuentos = [...descuentos];
+    nuevosDescuentos[index] = calcularDescuento(nuevoValor);
+    setDescuentos(nuevosDescuentos);
+  };
+
+  // Recalcular todos los descuentos al presionar el botón
   const aplicarDescuento = () => {
     const preciosConDescuento = precios.map((p) => calcularDescuento(p));
     setDescuentos(preciosConDescuento);
