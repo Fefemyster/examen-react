@@ -1,4 +1,5 @@
 import { Producto } from "./Producto";
+import { Descuento } from "./Descuento";
 
 export const DescuentoCalculado = () => {
   return (
@@ -7,10 +8,8 @@ export const DescuentoCalculado = () => {
         <div>Calculadora Descuentos</div>
 
         <Producto precio={0} />
-        <Producto precio={0} />
-        <Producto precio={0} />
-        <Producto precio={0} />
-        <Producto precio={0} />
+
+        <Descuento />
       </form>
     </>
   );

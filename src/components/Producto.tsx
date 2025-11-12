@@ -7,12 +7,10 @@ interface Props {
 export const Producto = ({ precio }: Props) => {
   const [valor, setValor] = useState(precio);
 
-  // Función para actualizar el valor desde el input
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nuevoValor = e.target.value;
-    // Convertimos a número si quieres, sino puedes usar el string directamente
     setValor(Number(nuevoValor));
+    console.log(nuevoValor);
   };
 
   return (
