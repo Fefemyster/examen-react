@@ -1,23 +1,19 @@
-export const Descuento = () => {
-  // Función que calcula el precio con descuento según los rangos
+interface Props {
+  precio: number;
+}
+
+export const Descuento = ({ precio }: Props) => {
   const calcularDescuento = (precio: number): number => {
     let descuento = 0;
 
-    if (precio >= 1000 && precio <= 4999.99) {
-      descuento = 0.1; // 10%
-    } else if (precio >= 5000 && precio <= 8999.99) {
-      descuento = 0.2; // 20%
-    } else if (precio >= 9000 && precio <= 12999.99) {
-      descuento = 0.3; // 30%
-    } else {
-      descuento = 0; // 0% para los demás casos
-    }
+    if (precio >= 1000 && precio <= 4999.99) descuento = 0.1;
+    else if (precio >= 5000 && precio <= 8999.99) descuento = 0.2;
+    else if (precio >= 9000 && precio <= 12999.99) descuento = 0.3;
 
     return precio - precio * descuento;
   };
 
   const handleClick = () => {
-    const precio = 300;
     const precioFinal = calcularDescuento(precio);
     console.log("Precio original:", precio);
     console.log("Precio con descuento:", precioFinal);
