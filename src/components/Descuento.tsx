@@ -15,7 +15,6 @@ export const Descuento = ({ precio }: Props) => {
 
   const handleClick = () => {
     const precioFinal = calcularDescuento(precio);
-    console.log("Precio original:", precio);
     console.log("Precio con descuento:", precioFinal);
   };
 
