@@ -10,7 +10,7 @@ export const Producto = ({ precio }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nuevoValor = e.target.value;
     setValor(Number(nuevoValor));
-    console.log(nuevoValor);
+    console.log(nuevoValor); //valor que necesito enviar a descuento
   };
 
   return (
